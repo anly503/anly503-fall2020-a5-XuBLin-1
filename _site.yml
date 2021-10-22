@@ -5,11 +5,7 @@ navbar:
   left:
     - text: "Home"
       href: index.html
-    - text: "About"
-      href: about.html
-  right:
-    - text: "Github"
-      href: about.html
+
 
 output:
   html_document:

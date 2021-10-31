@@ -22,3 +22,5 @@ htmltools::includeHTML("eco/altair.html")
 ```
 
 I choose the line chart for the dataset is because there are some null values in folders of appliances. So some arrays with null values need to be removed. There are two dives in September, it may indicate that there were two blackouts in September. There is a decrease in Freezer since December while other appliances don't change a lot, it indicates the in December the area where the house is located is cold enough to preserve stuff that needs to be placed in the refrigerator.
+
+Data used in either plot are from the '04' folder(4th household) of the ECO dataset collected by Wilhelm Kleiminger and Christian Beckel.

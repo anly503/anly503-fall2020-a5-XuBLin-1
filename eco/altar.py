@@ -34,15 +34,20 @@ df = df.set_axis(['Fridge', 'Kitchen appliances', 'Lamp', 'Stereo and laptop',
                   'Freezer', 'Tablet', 'Entertainment', 'Microwave'], axis='index')
 df = df.T
 df.index.name = 'Date'
-df = df.reset_index().melt('Date', var_name='Appliance', value_name='Power')
+df = df.reset_index().melt('Date', var_name='Appliance', value_name='Power(Watt)')
 nearest = alt.selection(type='single', nearest=True, on='mouseover',
                         fields=['Date'], empty='none')
 
 # The basic line
 line = alt.Chart(df).mark_line(interpolate='basis').encode(
     alt.X('Date:T', axis=alt.Axis(grid=False)),
-    y='Power:Q',
+    y='Power(Watt):Q',
     color='Appliance:N'
+).properties(
+    title={
+      "text": ['Power Consumed of Appliances By Date'],
+      "subtitle": ["Data from 4th household of ECO dataset"]
+    }
 )
 
 # Draw points on the line, and highlight based on selection
@@ -54,7 +59,7 @@ points = line.mark_point().encode(
 
 # Draw text labels near the points, and highlight based on selection
 text = line.mark_text(align='left', dx=5, dy=-5).encode(
-    text=alt.condition(nearest, 'Power:Q', alt.value(' '))
+    text=alt.condition(nearest, 'Power(Watt):Q', alt.value(' '))
 )
 
 # Draw a rule at the location of the selection
